@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.license               = { :type => 'MIT', :file => 'LICENSE' }
   s.author                = { 'Dwarven' => 'prison.yang@gmail.com' }
   s.source                = { :git => 'https://github.com/Dwarven/DYCoordinateInChina.git', :tag => s.version }
-  s.source_files          = '*.{h,m,geojson}'
+  s.source_files          = '*.{h,m}'
+  s.resource              = '*.geojson'
 
 end
