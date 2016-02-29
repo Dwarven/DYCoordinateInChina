@@ -10,5 +10,6 @@ Pod::Spec.new do |s|
   s.source                = { :git => 'https://github.com/Dwarven/DYCoordinateInChina.git', :tag => s.version }
   s.source_files          = '*.{h,m}'
   s.resource              = '*.geojson'
+  s.ios.frameworks        = 'CoreLocation', 'MapKit'
 
 end
