@@ -9,6 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CLLocation.h>
 
 @interface DYCoordinateInChina : NSObject
 
