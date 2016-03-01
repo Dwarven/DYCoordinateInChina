@@ -107,7 +107,12 @@ static NSArray * MKShapesFromGeoJSONFeatureCollection(NSDictionary *featureColle
 }
 
 static DYCoordinateInChina * __sharedInstance = NULL;
-static MKPolygonRenderer * __polygonRenderer = NULL;
+
+@interface DYCoordinateInChina () {
+    MKPolygonRenderer * _polygonRenderer;
+}
+
+@end
 
 @implementation DYCoordinateInChina
 
@@ -116,17 +121,24 @@ static MKPolygonRenderer * __polygonRenderer = NULL;
     dispatch_once(&onceToken, ^{
         if (__sharedInstance == NULL) {
             __sharedInstance = [[DYCoordinateInChina alloc] init];
-            NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"china" withExtension:@"geojson"]];
-            NSDictionary *geoJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSArray *shapes = MKShapesFromGeoJSONFeatureCollection(geoJSON);
-            __polygonRenderer = [[MKPolygonRenderer alloc] initWithPolygon:[shapes firstObject]];
         }
     });
     return __sharedInstance;
 }
 
+- (id)init{
+    self = [super init];
+    if (self) {
+        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"china" withExtension:@"geojson"]];
+        NSDictionary *geoJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSArray *shapes = MKShapesFromGeoJSONFeatureCollection(geoJSON);
+        _polygonRenderer = [[MKPolygonRenderer alloc] initWithPolygon:[shapes firstObject]];
+    }
+    return self;
+}
+
 - (BOOL)coordinateInChina:(CLLocationCoordinate2D)coordinate{
-    return CGPathContainsPoint(__polygonRenderer.path, NULL, [__polygonRenderer pointForMapPoint:MKMapPointForCoordinate(coordinate)], FALSE);
+    return CGPathContainsPoint(_polygonRenderer.path, NULL, [_polygonRenderer pointForMapPoint:MKMapPointForCoordinate(coordinate)], FALSE);
 }
 
 @end
