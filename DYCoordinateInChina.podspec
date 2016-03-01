@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name                  = 'DYCoordinateInChina'
-  s.version               = '0.0.1'
+  s.version               = '0.0.2'
   s.summary               = 'To determine a coordinate is in China Mainland.'
   s.homepage              = 'https://github.com/Dwarven/DYCoordinateInChina'
   s.ios.deployment_target = '7.0'
