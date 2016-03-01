@@ -11,8 +11,10 @@ pod 'DYCoordinateInChina'
 
 How to use 
 ---
-Objective-C
 ```obj-c
-    #import "DYCoordinateInChina.h"
-    BOOL result = [[DYCoordinateInChina sharedInstance] coordinateInChina:<#(CLLocationCoordinate2D)#>];
+#import "DYCoordinateInChina.h"
+BOOL result = [[DYCoordinateInChina sharedInstance] coordinateInChina:<#(CLLocationCoordinate2D)#>];
+// or
+DYCoordinateInChina * cic = [[DYCoordinateInChina alloc] init];
+BOOL result = [cic coordinateInChina:<#(CLLocationCoordinate2D)#>];
 ```
