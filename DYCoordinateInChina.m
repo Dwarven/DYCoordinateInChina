@@ -129,7 +129,7 @@ static DYCoordinateInChina * __sharedInstance = NULL;
 - (id)init{
     self = [super init];
     if (self) {
-        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"china" withExtension:@"geojson"]];
+        NSData *data = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"china_mainland" withExtension:@"geojson"]];
         NSDictionary *geoJSON = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSArray *shapes = MKShapesFromGeoJSONFeatureCollection(geoJSON);
         _polygonRenderer = [[MKPolygonRenderer alloc] initWithPolygon:[shapes firstObject]];
