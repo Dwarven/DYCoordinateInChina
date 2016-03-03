@@ -1,5 +1,5 @@
 # DYCoordinateInChina
-To determine a coordinate is in China Mainland
+To determine a coordinate is in mars in China (GCJ-02)
 
 #### Podfile
 
